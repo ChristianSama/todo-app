@@ -1,6 +1,8 @@
 import React from "react";
 import { MdDeleteOutline } from "react-icons/md";
 import { MdOutlineModeEdit } from "react-icons/md"
+import '../Styles/Todo.css';
+import '../Styles/TodoList.css';
 
 function TodoList(props) {
   const todos = props.todos.map((todo) =>

@@ -1,0 +1,19 @@
+.todo-form {
+  width: 100%;
+  max-width: 35rem;
+  margin: 0 auto 1rem auto;
+}
+
+.top-bar {
+  display: flex;
+}
+
+.todo-form input {
+  width: 100%;
+}
+
+@media screen and (min-width: 37.5rem) {
+  .todo-form {
+    margin-bottom: 2.5rem;
+  }
+}
