@@ -9,8 +9,8 @@ function TodoForm(props) {
 
   const handleChange = (e) => {
     const target = e.target;
-    const value = target.value;
-    const name = target.name;
+    const value = target.innerHTML;
+    const name = target.getAttribute("name");
 
     if (name === "title") {
       setTitle(value);
@@ -36,29 +36,31 @@ function TodoForm(props) {
 
   const handleEdit = (e) => {
     e.preventDefault();
-    props.onSubmit({
-      id: props.todo.id,
-      title: title,
-      body: body
-    })
+    if (e.target.id === "edit-bg" || e.target.id === "save-btn") {
+      props.onSubmit({
+        id: props.todo.id,
+        title: title,
+        body: body
+      })
+    }
   }
 
   return (
-    <form className="todo-form" onSubmit={props.todo ? handleEdit : handleCreate}>
-      <div className="top-bar">
-        <input type="text" placeholder="Title" value={title} name="title" onChange={handleChange} />
-        <button type="button">Pin</button>
-      </div>
-      <input type="text" placeholder="Take a note..." value={body} name="body" onChange={handleChange} />
-      {/* <div contentEditable="true" onInput={handleChange} name="body" placeholder="Take a note...">{body}</div> */}
-      <div className="bottom-bar">
-        <div className="icons">
-          {/* icons */}
+    <div id={props.todo && "edit-bg"} onClick={props.todo && handleEdit}>
+      <form className={`todo-form ${props.className}`} onSubmit={props.todo ? handleEdit : handleCreate}>
+        <div className="top-bar">
+          <div className="editable" contentEditable="true" onBlur={handleChange} name="title" data-placeholder="Title">{title}</div>
+          <button type="button">Pin</button>
         </div>
-        {/* <button type="button">Close</button> */}
-        <button>Save</button>
-      </div>
-    </form>
+        <div className="editable" contentEditable="true" onBlur={handleChange} name="body" data-placeholder="Take a note...">{body}</div>
+        <div className="bottom-bar">
+          <div className="icons">
+            {/* icons */}
+          </div>
+          <button id="save-btn">Save</button>
+        </div>
+      </form>
+    </div>
   );
 }
 export default TodoForm;

@@ -26,12 +26,9 @@ function App() {
     setEditingTodo(todo);
   }
 
-  const hideEditModal = () => {
-    setEditingTodo(null);
-  }
-
   const editTodo = (newTodo) => {
     setTodos(prevTodos => prevTodos.map(todo => todo.id === newTodo.id ? newTodo : todo));
+    setEditingTodo(null);
   }
 
   return (
@@ -39,9 +36,7 @@ function App() {
       <TodoForm onSubmit={addTodo} />
       <TodoList todos={todos} removeTodo={removeTodo} showEditModal={showEditModal} />
       {editingTodo &&
-        <div className="edit-bg">
-          <TodoForm onSubmit={editTodo} todo={editingTodo}/>
-        </div>
+        <TodoForm onSubmit={editTodo} todo={editingTodo} className="edit-form" />
       }
     </div>
   );

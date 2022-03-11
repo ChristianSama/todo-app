@@ -7,8 +7,8 @@ import '../Styles/TodoList.css';
 function TodoList(props) {
   const todos = props.todos.map((todo) =>
     <div className="card" key={todo.id}>
-      <p className="title">{todo.title}</p>
-      <p className="body">{todo.body}</p>
+      <div className="title">{todo.title}</div>
+      <div className="body">{todo.body}</div>
       <button type="button" onClick={() => props.removeTodo(todo.id)}><MdDeleteOutline /></button>
       <button type="button" onClick={() => props.showEditModal(todo)}><MdOutlineModeEdit /></button>
     </div>
