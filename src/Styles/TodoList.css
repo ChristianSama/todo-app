@@ -8,3 +8,7 @@
   border-radius: 5px;
   padding: 1rem;
 }
+
+.title, .body {
+  white-space: pre;
+}

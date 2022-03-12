@@ -4,12 +4,13 @@ import uniqid from "uniqid";
 import "../Styles/TodoForm.css"
 
 function TodoForm(props) {
+  //TODO: review these 2 lines. Are they correct?
   const [title, setTitle] = useState(props.todo ? props.todo.title : "");
   const [body, setBody] = useState(props.todo ? props.todo.body : "");
 
   const handleChange = (e) => {
     const target = e.target;
-    const value = target.innerHTML;
+    const value = formatText(target.innerHTML);
     const name = target.getAttribute("name");
 
     if (name === "title") {
@@ -18,6 +19,11 @@ function TodoForm(props) {
     if (name === "body") {
       setBody(value);
     }
+  }
+
+  function formatText(text) {
+    const formatedText = text.replace(/<div>/g, "\n").replace(/<\/div>/g, "").replace(/<br>/g, "\n");
+    return formatedText;
   }
 
   const handleCreate = (e) => {

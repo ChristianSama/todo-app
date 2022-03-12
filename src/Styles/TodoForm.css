@@ -35,6 +35,7 @@
 
 .editable {
   width: 100%;
+  white-space: pre;
 }
 
 @media screen and (min-width: 37.5rem) {
