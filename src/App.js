@@ -32,7 +32,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" onClick={() => {console.log(document.activeElement)}}>
       <TodoForm onSubmit={addTodo} />
       <TodoList todos={todos} removeTodo={removeTodo} showEditModal={showEditModal} />
       {editingTodo &&
