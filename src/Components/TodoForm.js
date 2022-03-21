@@ -22,12 +22,19 @@ function TodoForm(props) {
   }
 
   function formatText(text) {
-    const formatedText = text.replace(/<div>/g, "\n").replace(/<\/div>/g, "").replace(/<br>/g, "\n");
+    const formatedText = text.replace(/<div>/g, "\n")
+                             .replace(/<\/div>/g, "")
+                             .replace(/&lt;/, "<")
+                             .replace(/&gt;/, ">")
+                             .replace(/<br>/g, "\n");
     return formatedText;
   }
 
   const handleCreate = (e) => {
     e.preventDefault();
+    if (title === "" && body === "") {
+      return;
+    }
     props.onSubmit({
       id: uniqid(),
       title: title,

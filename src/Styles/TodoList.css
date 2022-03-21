@@ -9,6 +9,11 @@
   padding: 1rem;
 }
 
+.title {
+  font-weight: bold;
+}
+
 .title, .body {
-  white-space: pre;
+  white-space:pre-line; /*make text recognize new line*/
+  overflow-wrap: break-word; /*make large words break into multiple lines*/
 }
